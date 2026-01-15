@@ -334,3 +334,33 @@ footer {
   color: white;
   margin-top: 40px;
 }
+/* ===========================
+   CONTRACT VIEWER
+=========================== */
+.contract-view-section {
+  max-width: 800px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+.contract-info p {
+  margin-bottom: 8px;
+}
+
+.contract-terms-box {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+}
+
+.contract-signature {
+  width: 400px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background: white;
+}
