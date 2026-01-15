@@ -1,0 +1,24 @@
+<section class="contract-form-section">
+  <h2>Create Contract</h2>
+
+  <form id="contract-form">
+    <label>Client</label>
+    <select name="clientId" id="contract-client" required>
+      <option value="">Select Client</option>
+    </select>
+
+    <label>Job</label>
+    <select name="jobId" id="contract-job" required>
+      <option value="">Select Job</option>
+    </select>
+
+    <label>Contract Terms</label>
+    <textarea name="terms" placeholder="Enter contract terms..." required></textarea>
+
+    <h3>Client Signature</h3>
+    <canvas id="signature-pad" width="400" height="200" style="border:1px solid #ccc; background:white;"></canvas>
+
+    <button type="button" id="clear-signature" class="btn secondary">Clear Signature</button>
+    <button type="submit" class="btn">Generate Contract</button>
+  </form>
+</section>
