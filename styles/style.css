@@ -1,0 +1,213 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  cursor: url('../assets/icons/tree-cursor.png'), auto;
+  line-height: 1.5;
+}
+
+/* ===========================
+   HEADER + NAV
+=========================== */
+header {
+  background: #0f3d0f;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo img {
+  height: 55px;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ff7b00;
+}
+
+/* Invisible admin tap area */
+.admin-tap {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: url('../assets/img/trees-bg.jpg') center/cover no-repeat;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  background: #ff7b00;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.btn.secondary {
+  background: #0f3d0f;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* ===========================
+   FEATURES STRIP
+=========================== */
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px;
+  background: white;
+}
+
+.feature {
+  background: #e8ffe8;
+  padding: 15px 25px;
+  margin: 10px;
+  border-left: 5px solid #0f3d0f;
+  font-weight: bold;
+}
+
+/* ===========================
+   SERVICES PAGE
+=========================== */
+.services-list {
+  padding: 40px;
+}
+
+.services-list h2 {
+  margin-bottom: 20px;
+}
+
+.service {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 5px solid #ff7b00;
+}
+
+/* ===========================
+   FORMS
+=========================== */
+form {
+  background: white;
+  padding: 25px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ===========================
+   ADMIN DASHBOARD
+=========================== */
+.admin-dashboard {
+  padding: 40px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.admin-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0f3d0f;
+  border: 2px solid #0f3d0f;
+}
+
+.admin-card:hover {
+  background: #e8ffe8;
+}
+
+/* ===========================
+   TABLES (Leads, Clients, Payments)
+=========================== */
+.lead-table,
+.client-table,
+.payment-table {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.lead-row,
+.client-row,
+.payment-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header {
+  background: #0f3d0f;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0f3d0f;
+  color: white;
+  margin-top: 40px;
+}
