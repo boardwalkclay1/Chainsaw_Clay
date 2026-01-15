@@ -475,3 +475,29 @@ function initContractForm() {
 }
 
 initContractForm();
+/* ===========================
+   CONTRACT VIEWER PAGE
+=========================== */
+function renderContractView() {
+  const section = document.querySelector(".contract-view-section");
+  if (!section) return;
+
+  const contractId = parseInt(getQueryParam("contractId"), 10);
+  const contract = CRM.contracts.find(c => c.id === contractId);
+
+  if (!contract) {
+    section.innerHTML = "<p>Contract not found.</p>";
+    return;
+  }
+
+  const client = CRM.clients.find(c => c.id === contract.clientId);
+  const job = CRM.jobs.find(j => j.id === contract.jobId);
+
+  document.getElementById("cv-client").textContent = client ? client.name : "Unknown";
+  document.getElementById("cv-job").textContent = job ? job.service : "Unknown";
+  document.getElementById("cv-date").textContent = contract.created;
+  document.getElementById("cv-terms").textContent = contract.terms;
+  document.getElementById("cv-signature").src = contract.signature;
+}
+
+renderContractView();
