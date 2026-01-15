@@ -394,3 +394,84 @@ renderPayments();
 renderNotifications();
 initSignaturePad();
 initSettings();
+/* ===========================
+   CONTRACT FORM LOGIC
+=========================== */
+function initContractForm() {
+  const form = document.getElementById("contract-form");
+  if (!form) return;
+
+  const clientSelect = document.getElementById("contract-client");
+  const jobSelect = document.getElementById("contract-job");
+  const canvas = document.getElementById("signature-pad");
+  const clearBtn = document.getElementById("clear-signature");
+
+  const ctx = canvas.getContext("2d");
+  let drawing = false;
+
+  // Populate clients
+  CRM.clients.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c.id;
+    opt.textContent = c.name;
+    clientSelect.appendChild(opt);
+  });
+
+  // Populate jobs when client changes
+  clientSelect.addEventListener("change", () => {
+    jobSelect.innerHTML = `<option value="">Select Job</option>`;
+    const jobs = CRM.jobs.filter(j => j.clientId == clientSelect.value);
+    jobs.forEach(j => {
+      const opt = document.createElement("option");
+      opt.value = j.id;
+      opt.textContent = `${j.service} – $${j.price}`;
+      jobSelect.appendChild(opt);
+    });
+  });
+
+  // Signature pad
+  canvas.addEventListener("mousedown", () => drawing = true);
+  canvas.addEventListener("mouseup", () => { drawing = false; ctx.beginPath(); });
+  canvas.addEventListener("mousemove", (e) => {
+    if (!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#000";
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  });
+
+  clearBtn.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  // Submit contract
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const signature = canvas.toDataURL();
+
+    const contract = {
+      id: Date.now(),
+      clientId: parseInt(formData.get("clientId")),
+      jobId: parseInt(formData.get("jobId")),
+      terms: formData.get("terms"),
+      signature,
+      created: new Date().toLocaleString()
+    };
+
+    CRM.contracts.push(contract);
+    CRM.notify(`Contract created for client #${contract.clientId}`);
+    CRM.save();
+
+    alert("Contract generated and saved.");
+    form.reset();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+}
+
+initContractForm();
