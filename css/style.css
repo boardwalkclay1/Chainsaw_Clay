@@ -364,3 +364,11 @@ footer {
   border-radius: 6px;
   background: white;
 }
+/* ===========================
+   TREE BACKGROUND
+=========================== */
+body {
+  background: url('../assets/img/big-tree.png') center bottom no-repeat,
+              linear-gradient(#b8864b, #6b3f1f);
+  background-size: contain;
+}
