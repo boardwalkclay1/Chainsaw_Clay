@@ -501,3 +501,28 @@ function renderContractView() {
 }
 
 renderContractView();
+/* ===========================
+   FALLING LEAVES ON INTERACTION
+=========================== */
+function spawnLeaf(x, y) {
+  const leaf = document.createElement("img");
+  leaf.src = "assets/img/leaf.png";
+  leaf.className = "falling-leaf";
+  leaf.style.left = x + "px";
+  leaf.style.top = y + "px";
+  document.body.appendChild(leaf);
+
+  setTimeout(() => leaf.remove(), 4000);
+}
+
+document.addEventListener("mousemove", (e) => {
+  if (Math.random() < 0.05) { // 5% chance per movement
+    spawnLeaf(e.clientX, e.clientY);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  for (let i = 0; i < 5; i++) {
+    spawnLeaf(e.clientX + (Math.random() * 40 - 20), e.clientY);
+  }
+});
