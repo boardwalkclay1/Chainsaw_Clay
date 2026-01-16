@@ -1,4 +1,15 @@
 /* ===========================
+   COLOR SYSTEM
+=========================== */
+:root {
+  --brown: #6b3f1f;
+  --green: #0f3d0f;
+  --black: #000000;
+  --silver: #c0c0c0;
+  --white: #ffffff;
+}
+
+/* ===========================
    GLOBAL RESET
 =========================== */
 * {
@@ -9,21 +20,37 @@
 
 body {
   font-family: Arial, sans-serif;
-  color: #222;
+  color: var(--black);
   line-height: 1.5;
 
   /* TREE BACKGROUND */
   background: url('../assets/img/big-tree.png') center bottom no-repeat,
-              linear-gradient(#b8864b, #6b3f1f);
+              linear-gradient(var(--brown), var(--black));
   background-size: contain;
+}
+
+/* ===========================
+   CSS LEAF CURSOR
+=========================== */
+#leaf-cursor {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 99999;
+
+  background: var(--green);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 4px var(--silver);
 }
 
 /* ===========================
    HEADER + NAV
 =========================== */
 header {
-  background: #0f3d0f;
-  color: white;
+  background: var(--green);
+  color: var(--white);
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -36,14 +63,14 @@ header .logo img {
 }
 
 nav a {
-  color: white;
+  color: var(--white);
   margin-left: 20px;
   text-decoration: none;
   font-weight: bold;
 }
 
 nav a:hover {
-  color: #ff7b00;
+  color: var(--silver);
 }
 
 .admin-tap {
@@ -55,27 +82,11 @@ nav a:hover {
 }
 
 /* ===========================
-   HERO SECTION
+   BUTTONS
 =========================== */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: url('../assets/img/trees-bg.jpg') center/cover no-repeat;
-  color: white;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero-buttons {
-  margin-top: 20px;
-}
-
 .btn {
-  background: #ff7b00;
-  color: white;
+  background: var(--brown);
+  color: var(--white);
   padding: 12px 25px;
   border-radius: 5px;
   text-decoration: none;
@@ -85,7 +96,7 @@ nav a:hover {
 }
 
 .btn.secondary {
-  background: #0f3d0f;
+  background: var(--black);
 }
 
 .btn:hover {
@@ -99,8 +110,8 @@ nav a:hover {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background: #ff7b00;
-  color: white;
+  background: var(--brown);
+  color: var(--white);
   padding: 15px 22px;
   border-radius: 50px;
   font-weight: bold;
@@ -118,10 +129,14 @@ nav a:hover {
 =========================== */
 .falling-leaf {
   position: fixed;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  background: var(--green);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(-45deg);
   pointer-events: none;
   animation: leaf-fall 4s linear forwards;
+  box-shadow: 0 0 4px var(--silver);
   z-index: 9999;
 }
 
@@ -136,7 +151,7 @@ nav a:hover {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background: #0f3d0f;
+  background: var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,16 +160,20 @@ nav a:hover {
 }
 
 .loading-text {
-  color: white;
+  color: var(--white);
   font-size: 2rem;
   margin-top: 20px;
 }
 
 .loading-leaf {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  background: var(--green);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(-45deg);
   animation: loading-leaf-fall 3s linear infinite;
+  box-shadow: 0 0 4px var(--silver);
 }
 
 @keyframes loading-leaf-fall {
@@ -163,7 +182,68 @@ nav a:hover {
 }
 
 /* ===========================
-   EVERYTHING ELSE (unchanged)
+   CONTENT SECTIONS
 =========================== */
-/* Services, gallery, forms, admin, tables, contract viewer, etc. */
-/* (Your previous CSS for these sections stays exactly the same.) */
+section {
+  padding: 40px;
+}
+
+h2 {
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   FORMS
+=========================== */
+form {
+  background: var(--white);
+  padding: 25px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  border: 2px solid var(--silver);
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--silver);
+  border-radius: 5px;
+}
+
+/* ===========================
+   TABLES
+=========================== */
+.table {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--white);
+  padding: 12px;
+  border-bottom: 1px solid var(--silver);
+}
+
+.table-header {
+  background: var(--green);
+  color: var(--white);
+  font-weight: bold;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--green);
+  color: var(--white);
+  margin-top: 40px;
+}
