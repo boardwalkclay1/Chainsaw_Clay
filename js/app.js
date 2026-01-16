@@ -526,3 +526,76 @@ document.addEventListener("click", (e) => {
     spawnLeaf(e.clientX + (Math.random() * 40 - 20), e.clientY);
   }
 });
+/* ===========================
+   JS CHAINSAW CURSOR
+=========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  cursor.id = "chainsaw-cursor";
+  cursor.style.position = "fixed";
+  cursor.style.width = "22px";
+  cursor.style.height = "22px";
+  cursor.style.pointerEvents = "none";
+  cursor.style.zIndex = "99999";
+
+  /* Draw a tiny chainsaw using CSS only */
+  cursor.style.borderLeft = "6px solid #444";
+  cursor.style.borderRight = "6px solid #444";
+  cursor.style.borderTop = "6px solid #ff7b00";
+  cursor.style.borderBottom = "6px solid #ff7b00";
+  cursor.style.borderRadius = "4px";
+
+  document.body.appendChild(cursor);
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + 5 + "px";
+    cursor.style.top = e.clientY + 5 + "px";
+  });
+});
+
+/* ===========================
+   FALLING LEAVES
+=========================== */
+function spawnLeaf(x, y) {
+  const leaf = document.createElement("img");
+  leaf.src = "assets/img/leaf.png";
+  leaf.className = "falling-leaf";
+  leaf.style.left = x + "px";
+  leaf.style.top = y + "px";
+  document.body.appendChild(leaf);
+
+  setTimeout(() => leaf.remove(), 4000);
+}
+
+document.addEventListener("mousemove", (e) => {
+  if (Math.random() < 0.05) {
+    spawnLeaf(e.clientX, e.clientY);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  for (let i = 0; i < 5; i++) {
+    spawnLeaf(e.clientX + (Math.random() * 40 - 20), e.clientY);
+  }
+});
+
+/* ===========================
+   LOADING SCREEN LEAVES
+=========================== */
+function startLoadingLeaves() {
+  const container = document.getElementById("loading-leaf-container");
+  if (!container) return;
+
+  setInterval(() => {
+    const leaf = document.createElement("img");
+    leaf.src = "assets/img/leaf.png";
+    leaf.className = "loading-leaf";
+    leaf.style.left = Math.random() * window.innerWidth + "px";
+    leaf.style.top = "-40px";
+    container.appendChild(leaf);
+
+    setTimeout(() => leaf.remove(), 3000);
+  }, 200);
+}
+
+startLoadingLeaves();
