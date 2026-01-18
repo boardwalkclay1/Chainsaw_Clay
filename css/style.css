@@ -1,17 +1,21 @@
-/* ===========================
-   COLOR SYSTEM
-=========================== */
+/* ============================================================
+   CINEMATIC FOREST UI — COLOR SYSTEM
+============================================================ */
 :root {
   --brown: #6b3f1f;
   --green: #0f3d0f;
+  --forest-green: #145214;
   --black: #000000;
   --silver: #c0c0c0;
   --white: #ffffff;
+
+  --glow-green: rgba(20, 255, 20, 0.25);
+  --glow-brown: rgba(180, 100, 40, 0.25);
 }
 
-/* ===========================
+/* ============================================================
    GLOBAL RESET
-=========================== */
+============================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -20,57 +24,72 @@
 
 body {
   font-family: Arial, sans-serif;
+  font-weight: 600;
   color: var(--black);
-  line-height: 1.5;
+  line-height: 1.6;
 
-  /* TREE BACKGROUND */
-  background: url('../assets/img/big-tree.png') center bottom no-repeat,
-              linear-gradient(var(--brown), var(--black));
+  /* CINEMATIC TREE BACKGROUND */
+  background:
+    url('../assets/img/big-tree.png') center bottom no-repeat,
+    linear-gradient(var(--brown), var(--black));
   background-size: contain;
+
+  /* Subtle breathing motion */
+  animation: forest-breathe 12s ease-in-out infinite alternate;
 }
 
-/* ===========================
-   CSS LEAF CURSOR
-=========================== */
+@keyframes forest-breathe {
+  0% { background-position-y: 100%; }
+  100% { background-position-y: 98%; }
+}
+
+/* ============================================================
+   CINEMATIC LEAF CURSOR
+============================================================ */
 #leaf-cursor {
   position: fixed;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
   z-index: 99999;
 
-  background: var(--green);
+  background: var(--forest-green);
   border-radius: 50% 0 50% 0;
   transform: rotate(-45deg);
-  box-shadow: 0 0 4px var(--silver);
+  box-shadow: 0 0 6px var(--glow-green);
 }
 
-/* ===========================
+/* ============================================================
    HEADER + NAV
-=========================== */
+============================================================ */
 header {
   background: var(--green);
   color: var(--white);
-  padding: 15px 20px;
+  padding: 18px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  border-bottom: 4px solid var(--brown);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 header .logo img {
-  height: 55px;
+  height: 70px;
+  filter: drop-shadow(0 0 4px var(--glow-brown));
 }
 
 nav a {
   color: var(--white);
-  margin-left: 20px;
+  margin-left: 25px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 1.05rem;
+  transition: 0.2s ease;
 }
 
 nav a:hover {
   color: var(--silver);
+  text-shadow: 0 0 6px var(--glow-green);
 }
 
 .admin-tap {
@@ -81,73 +100,77 @@ nav a:hover {
   right: 10px;
 }
 
-/* ===========================
+/* ============================================================
    BUTTONS
-=========================== */
-.btn {
+============================================================ */
+.btn,
+button {
   background: var(--brown);
   color: var(--white);
-  padding: 12px 25px;
-  border-radius: 5px;
+  padding: 14px 28px;
+  border-radius: 6px;
   text-decoration: none;
-  margin: 10px;
-  display: inline-block;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: 0.2s ease;
 }
 
-.btn.secondary {
-  background: var(--black);
+.btn:hover,
+button:hover {
+  background: var(--forest-green);
+  box-shadow: 0 0 10px var(--glow-green);
 }
 
-.btn:hover {
-  opacity: 0.85;
-}
-
-/* ===========================
+/* ============================================================
    CALL NOW BUTTON
-=========================== */
+============================================================ */
 .call-now-btn {
   position: fixed;
   bottom: 25px;
   right: 25px;
   background: var(--brown);
   color: var(--white);
-  padding: 15px 22px;
+  padding: 16px 26px;
   border-radius: 50px;
-  font-weight: bold;
+  font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   z-index: 999;
+  transition: 0.2s ease;
 }
 
 .call-now-btn:hover {
-  opacity: 0.85;
+  background: var(--forest-green);
+  box-shadow: 0 0 12px var(--glow-green);
 }
 
-/* ===========================
-   FALLING LEAVES
-=========================== */
+/* ============================================================
+   FALLING LEAVES (CINEMATIC)
+============================================================ */
 .falling-leaf {
   position: fixed;
-  width: 18px;
-  height: 18px;
-  background: var(--green);
+  width: 20px;
+  height: 20px;
+  background: var(--forest-green);
   border-radius: 50% 0 50% 0;
   transform: rotate(-45deg);
   pointer-events: none;
   animation: leaf-fall 4s linear forwards;
-  box-shadow: 0 0 4px var(--silver);
+  box-shadow: 0 0 6px var(--glow-green);
   z-index: 9999;
 }
 
 @keyframes leaf-fall {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+  100% { transform: translateY(240px) rotate(360deg); opacity: 0; }
 }
 
-/* ===========================
+/* ============================================================
    LOADING SCREEN
-=========================== */
+============================================================ */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -161,89 +184,64 @@ nav a:hover {
 
 .loading-text {
   color: var(--white);
-  font-size: 2rem;
+  font-size: 2.4rem;
+  font-weight: 800;
   margin-top: 20px;
+  text-shadow: 0 0 10px var(--glow-green);
 }
 
 .loading-leaf {
   position: absolute;
-  width: 18px;
-  height: 18px;
-  background: var(--green);
+  width: 20px;
+  height: 20px;
+  background: var(--forest-green);
   border-radius: 50% 0 50% 0;
   transform: rotate(-45deg);
   animation: loading-leaf-fall 3s linear infinite;
-  box-shadow: 0 0 4px var(--silver);
+  box-shadow: 0 0 6px var(--glow-green);
 }
 
 @keyframes loading-leaf-fall {
-  0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(-60px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(320px) rotate(360deg); opacity: 0; }
 }
 
-/* ===========================
-   CONTENT SECTIONS
-=========================== */
-section {
-  padding: 40px;
-}
-
-h2 {
-  color: var(--green);
-  margin-bottom: 20px;
-}
-
-/* ===========================
-   FORMS
-=========================== */
+/* ============================================================
+   FORMS (CINEMATIC)
+============================================================ */
 form {
   background: var(--white);
-  padding: 25px;
-  max-width: 600px;
-  margin: 20px auto;
-  border-radius: 8px;
-  border: 2px solid var(--silver);
+  padding: 30px;
+  max-width: 650px;
+  margin: 30px auto;
+  border-radius: 10px;
+  border: 3px solid var(--brown);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
 }
 
 form input,
 form select,
 form textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid var(--silver);
-  border-radius: 5px;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 2px solid var(--silver);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #ffffff;
 }
 
-/* ===========================
-   TABLES
-=========================== */
-.table {
-  width: 90%;
-  margin: 20px auto;
-}
-
-.table-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: var(--white);
-  padding: 12px;
-  border-bottom: 1px solid var(--silver);
-}
-
-.table-header {
-  background: var(--green);
-  color: var(--white);
-  font-weight: bold;
-}
-
-/* ===========================
+/* ============================================================
    FOOTER
-=========================== */
+============================================================ */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   background: var(--green);
   color: var(--white);
+  font-weight: 800;
+  border-top: 4px solid var(--brown);
   margin-top: 40px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
 }
