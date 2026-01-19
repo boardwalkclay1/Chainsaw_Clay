@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>View Contract – Chainsaw Clay's Tree Service</title>
+  <title>Contract Viewer – Admin CRM</title>
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/app.js"></script>
 </head>
@@ -10,31 +10,29 @@
 <body>
 <header>
   <div class="logo">
-    <img src="assets/logo/tree-logo.png" alt="Chainsaw Clay's Tree Service">
+    <img src="assets/logo/tree-logo.png" alt="Tree Logo">
   </div>
 
   <nav>
     <a href="contracts.html">Back to Contracts</a>
+    <a href="admin.html">Dashboard</a>
   </nav>
-
-  <div id="admin-tap" class="admin-tap"></div>
 </header>
 
-<section class="contract-view-section">
-  <h2>Contract Details</h2>
+<section class="page-header">
+  <h1>Contract</h1>
+</section>
 
-  <div class="contract-info">
-    <p><strong>Client:</strong> <span id="cv-client"></span></p>
-    <p><strong>Job:</strong> <span id="cv-job"></span></p>
-    <p><strong>Created:</strong> <span id="cv-date"></span></p>
-  </div>
+<section class="contract-view">
+  <div id="contract-info" class="profile-card"></div>
 
-  <h3>Contract Terms</h3>
-  <div id="cv-terms" class="contract-terms-box"></div>
+  <h2>Contract Text</h2>
+  <div id="contract-body" class="contract-body"></div>
 
-  <h3>Signature</h3>
-  <img id="cv-signature" class="contract-signature" alt="Client Signature">
+  <h2>Signature</h2>
+  <canvas id="signature-pad" width="500" height="200" class="signature-box"></canvas>
 
+  <button class="btn">Save Signature</button>
 </section>
 
 <footer>
