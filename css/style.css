@@ -1,21 +1,4 @@
-/* ============================================================
-   CINEMATIC FOREST UI — COLOR SYSTEM
-============================================================ */
-:root {
-  --brown: #6b3f1f;
-  --green: #0f3d0f;
-  --forest-green: #145214;
-  --black: #000000;
-  --silver: #c0c0c0;
-  --white: #ffffff;
-
-  --glow-green: rgba(20, 255, 20, 0.25);
-  --glow-brown: rgba(180, 100, 40, 0.25);
-}
-
-/* ============================================================
-   GLOBAL RESET
-============================================================ */
+/* GLOBAL RESET */
 * {
   margin: 0;
   padding: 0;
@@ -24,224 +7,100 @@
 
 body {
   font-family: Arial, sans-serif;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1.6;
-
-  /* CINEMATIC TREE BACKGROUND */
-  background:
-    url('../assets/img/big-tree.png') center bottom no-repeat,
-    linear-gradient(var(--brown), var(--black));
-  background-size: contain;
-
-  /* Subtle breathing motion */
-  animation: forest-breathe 12s ease-in-out infinite alternate;
+  color: white;
+  background: url('../assets/backgrounds/tree-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-@keyframes forest-breathe {
-  0% { background-position-y: 100%; }
-  100% { background-position-y: 98%; }
-}
-
-/* ============================================================
-   CINEMATIC LEAF CURSOR
-============================================================ */
-#leaf-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-  z-index: 99999;
-
-  background: var(--forest-green);
-  border-radius: 50% 0 50% 0;
-  transform: rotate(-45deg);
-  box-shadow: 0 0 6px var(--glow-green);
-}
-
-/* ============================================================
-   HEADER + NAV
-============================================================ */
+/* HEADER */
 header {
-  background: var(--green);
-  color: var(--white);
-  padding: 18px 25px;
+  width: 100%;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 4px solid var(--brown);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-header .logo img {
-  height: 70px;
-  filter: drop-shadow(0 0 4px var(--glow-brown));
+.logo img {
+  height: 90px;
 }
 
+/* NAVIGATION */
 nav a {
-  color: var(--white);
-  margin-left: 25px;
+  color: white;
+  margin-left: 20px;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.05rem;
-  transition: 0.2s ease;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 nav a:hover {
-  color: var(--silver);
-  text-shadow: 0 0 6px var(--glow-green);
+  color: #4cff4c;
 }
 
-.admin-tap {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 160px 20px;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* ============================================================
-   BUTTONS
-============================================================ */
-.btn,
-button {
-  background: var(--brown);
-  color: var(--white);
-  padding: 14px 28px;
-  border-radius: 6px;
+.hero h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #4cff4c;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  transition: 0.2s ease;
+  font-size: 20px;
 }
 
-.btn:hover,
-button:hover {
-  background: var(--forest-green);
-  box-shadow: 0 0 10px var(--glow-green);
+.btn:hover {
+  background: #32d132;
 }
 
-/* ============================================================
-   CALL NOW BUTTON
-============================================================ */
-.call-now-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: var(--brown);
-  color: var(--white);
-  padding: 16px 26px;
-  border-radius: 50px;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  z-index: 999;
-  transition: 0.2s ease;
+/* SERVICES SECTION */
+.home-services {
+  padding: 60px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
 }
 
-.call-now-btn:hover {
-  background: var(--forest-green);
-  box-shadow: 0 0 12px var(--glow-green);
+.home-services h2 {
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
-/* ============================================================
-   FALLING LEAVES (CINEMATIC)
-============================================================ */
-.falling-leaf {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: var(--forest-green);
-  border-radius: 50% 0 50% 0;
-  transform: rotate(-45deg);
-  pointer-events: none;
-  animation: leaf-fall 4s linear forwards;
-  box-shadow: 0 0 6px var(--glow-green);
-  z-index: 9999;
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-@keyframes leaf-fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(240px) rotate(360deg); opacity: 0; }
-}
-
-/* ============================================================
-   LOADING SCREEN
-============================================================ */
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  background: var(--green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 999999;
-}
-
-.loading-text {
-  color: var(--white);
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-top: 20px;
-  text-shadow: 0 0 10px var(--glow-green);
-}
-
-.loading-leaf {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: var(--forest-green);
-  border-radius: 50% 0 50% 0;
-  transform: rotate(-45deg);
-  animation: loading-leaf-fall 3s linear infinite;
-  box-shadow: 0 0 6px var(--glow-green);
-}
-
-@keyframes loading-leaf-fall {
-  0% { transform: translateY(-60px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(320px) rotate(360deg); opacity: 0; }
-}
-
-/* ============================================================
-   FORMS (CINEMATIC)
-============================================================ */
-form {
-  background: var(--white);
-  padding: 30px;
-  max-width: 650px;
-  margin: 30px auto;
+.service-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
   border-radius: 10px;
-  border: 3px solid var(--brown);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  font-size: 22px;
+  font-weight: bold;
 }
 
-form input,
-form select,
-form textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  border: 2px solid var(--silver);
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 700;
-  background: #ffffff;
-}
-
-/* ============================================================
-   FOOTER
-============================================================ */
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 25px;
-  background: var(--green);
-  color: var(--white);
-  font-weight: 800;
-  border-top: 4px solid var(--brown);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
   margin-top: 40px;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
 }
